@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".OTP_page"
+    android:background="@drawable/background">
+
+    <ImageView
+        android:id="@+id/banner"
+        android:layout_width="360dp"
+        android:layout_height="300dp"
+        android:background="@drawable/frontpic"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="70dp"
+        />
+
+    <EditText
+        android:id="@+id/OTP"
+        android:layout_width="350dp"
+        android:layout_height="65dp"
+        android:hint="Enter Your OTP"
+        android:layout_below="@+id/banner"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="150dp"
+        android:background="@drawable/curved_white"
+        android:textColorHint="@color/insider"
+        android:textColor="@color/black"
+        android:padding="15dp"
+        android:alpha="0.9"
+        />
+
+    <EditText
+        android:layout_width="130dp"
+        android:layout_height="50dp"
+        android:text="  Enter OTP!"
+        android:textStyle="bold"
+        android:textSize="22dp"
+        android:layout_below="@+id/OTP"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="50dp"
+        android:fontFamily="@font/robotofont"
+        android:layout_marginTop="-57dp"
+        android:textColor="@color/black"
+        android:alpha="0.9"
+        android:background="@drawable/redcurve"
+        />
+
+
+    <TextView
+        android:id="@+id/telegram"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="OPT has been sent into your telegram !!!"
+        android:layout_below="@+id/OTP"
+        android:layout_centerHorizontal="true"
+        android:textSize="17dp"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/green"
+        />
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Timing Remaining..."
+        android:layout_below="@+id/telegram"
+        android:layout_centerHorizontal="true"
+        android:textSize="17dp"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        />
+
+    <TextView
+        android:id="@+id/minute"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1 : 11"
+        android:layout_below="@+id/time"
+        android:layout_centerHorizontal="true"
+        android:textSize="17dp"
+        android:layout_marginTop="15dp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/submit"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:text="SUBMIT OTP"
+        android:textSize="28sp"
+        android:fontFamily="@font/robotofont"
+        android:layout_below="@+id/minute"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/curved_btn"
+        android:textColor="@color/black"
+        />
+
+    <TextView
+        android:id="@+id/forget"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Forget Your"
+        android:layout_below="@+id/btnSubmit"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:layout_marginStart="120dp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Password ?"
+        android:layout_below="@+id/btnSubmit"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:layout_alignLeft="@+id/forget"
+        android:layout_marginStart="90dp"
+        />
+</RelativeLayout>

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "151002684373",
+    "project_id": "aub-portal",
+    "storage_bucket": "aub-portal.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:151002684373:android:1c754b9b297bba29cc3b5c",
+        "android_client_info": {
+          "package_name": "com.example.aub"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAkAcJ9X463S27xjkTOkKxCuOOV9D3BD_k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

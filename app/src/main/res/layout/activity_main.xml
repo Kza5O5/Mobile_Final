@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="@color/main">
+
+    <ImageButton
+        android:id="@+id/pic"
+        android:layout_width="380dp"
+        android:layout_height="330dp"
+        android:background="@drawable/frontpic"
+        android:layout_marginTop="160dp"
+        android:layout_centerHorizontal="true"
+        />
+
+    <TextView
+        android:id="@+id/gotoregister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="WELCOME"
+        android:fontFamily="@font/robotofont"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:textSize="50dp"
+        android:layout_below="@+id/pic"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        >
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/submit"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:text="SUBMIT OTP"
+            android:textSize="28sp"
+            android:fontFamily="@font/robotofont"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/curved_btn"
+            android:textColor="@color/black"
+
+            />
+    </LinearLayout>
+
+
+</RelativeLayout>
