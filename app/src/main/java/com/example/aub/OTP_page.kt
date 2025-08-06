@@ -11,7 +11,7 @@ import com.example.aub.databinding.ActivityOtpPageBinding
 class OTP_page : AppCompatActivity() {
 
     private lateinit var binding: ActivityOtpPageBinding
-    private val correctOTP = "123456"
+    private val correctOTP = "1111"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

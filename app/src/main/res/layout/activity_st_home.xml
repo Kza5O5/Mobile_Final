@@ -32,11 +32,11 @@
             android:layout_marginTop="70dp"
             android:layout_marginStart="135dp" />
 
-        <TextView
+        <EditText
             android:id="@+id/edtname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Zengg U Hout"
+            android:text="Name showhere"
             android:textSize="24sp"
             android:fontFamily="@font/robotofont"
             android:textColor="@color/white"
@@ -57,11 +57,11 @@
             android:layout_marginTop="20dp"
             android:layout_marginStart="135dp" />
 
-        <TextView
+        <EditText
             android:id="@+id/edtid"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="0008113"
+            android:text="Idshow here's"
             android:textSize="24sp"
             android:fontFamily="@font/robotofont"
             android:textColor="@color/white"

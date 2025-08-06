@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Permission"
+    android:background="@color/white">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <View
+            android:id="@+id/conor"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@drawable/pfp_conor"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Permission"
+            android:textSize="40sp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:fontFamily="@font/robotofont"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="25dp"
+            />
+
+        <LinearLayout
+            android:id="@+id/linear1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/conor"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name"
+                android:textSize="25sp"
+                android:fontFamily="@font/robotofont"
+                android:layout_marginStart="40sp"
+                android:textColor="@color/black"
+                />
+
+            <EditText
+                android:id="@+id/edtname"
+                android:layout_width="380dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="3dp"
+                android:alpha="0.8"
+                android:background="@drawable/edt_enter"
+                android:hint="Enter Your Name"
+                android:padding="10dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/insider" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ID"
+                android:textSize="25sp"
+                android:layout_marginStart="40sp"
+                android:fontFamily="@font/robotofont"
+                android:layout_marginTop="3dp"
+                android:textColor="@color/black"
+                />
+            <EditText
+                android:id="@+id/edtid"
+                android:layout_width="380dp"
+                android:layout_height="50dp"
+                android:background="@drawable/edt_enter"
+                android:layout_gravity="center"
+                android:alpha="0.8"
+                android:hint="Enter Your ID"
+                android:padding="10dp"
+                android:layout_marginTop="3dp"
+                android:textColorHint="@color/insider"
+                android:textColor="@color/black"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Gender"
+                android:textSize="25sp"
+                android:fontFamily="@font/robotofont"
+                android:layout_marginStart="40sp"
+                android:layout_marginTop="3dp"
+                android:textColor="@color/black"
+                />
+
+            <RadioGroup
+                android:id="@+id/radioGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="3dp"
+                >
+
+                <RadioButton
+                    android:id="@+id/male"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:fontFamily="@font/robotofont"
+                    android:layout_marginStart="40dp"
+                    android:text="Male"
+                    android:textColor="@color/black"
+                    />
+
+                <RadioButton
+                    android:id="@+id/female"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:fontFamily="@font/robotofont"
+                    android:text="Female"
+                    android:textColor="@color/black"
+                    />
+
+
+            </RadioGroup>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Phone Number"
+                android:textSize="25sp"
+                android:fontFamily="@font/robotofont"
+                android:layout_marginStart="40sp"
+                android:layout_marginTop="3dp"
+                android:textColor="@color/black"
+                />
+            <EditText
+                android:id="@+id/edtphonenumber"
+                android:layout_width="380dp"
+                android:layout_height="50dp"
+                android:background="@drawable/edt_enter"
+                android:layout_gravity="center"
+                android:alpha="0.8"
+                android:hint="Enter Your Phone Number"
+                android:padding="10dp"
+                android:layout_marginTop="3dp"
+                android:textColorHint="@color/insider"
+                android:textColor="@color/black"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Major"
+                android:textSize="25sp"
+                android:layout_marginStart="40sp"
+                android:layout_marginTop="3dp"
+                android:fontFamily="@font/robotofont"
+                android:textColor="@color/black"
+                />
+            <EditText
+                android:id="@+id/edtmajor"
+                android:layout_width="380dp"
+                android:layout_height="50dp"
+                android:background="@drawable/edt_enter"
+                android:layout_gravity="center"
+                android:alpha="0.8"
+                android:hint="Enter Your Major"
+                android:padding="10dp"
+                android:layout_marginTop="3dp"
+                android:textColorHint="@color/insider"
+                android:textColor="@color/black"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Session"
+                android:textSize="25sp"
+                android:fontFamily="@font/robotofont"
+                android:layout_marginStart="40sp"
+                android:layout_marginTop="3dp"
+                android:textColor="@color/black"
+                />
+            <EditText
+                android:id="@+id/edtsession"
+                android:layout_width="380dp"
+                android:layout_height="50dp"
+                android:background="@drawable/edt_enter"
+                android:layout_gravity="center"
+                android:alpha="0.8"
+                android:hint="Enter Your Session"
+                android:padding="10dp"
+                android:layout_marginTop="3dp"
+                android:textColorHint="@color/insider"
+                android:textColor="@color/black"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Reason"
+                android:textSize="25sp"
+                android:layout_marginStart="40sp"
+                android:fontFamily="@font/robotofont"
+                android:layout_marginTop="3dp"
+                android:textColor="@color/black"
+                />
+            <EditText
+                android:id="@+id/edtreason"
+                android:layout_width="380dp"
+                android:layout_height="170dp"
+                android:background="@drawable/edt_enter"
+                android:layout_gravity="center"
+                android:alpha="0.8"
+                android:hint="Reason..."
+                android:padding="10dp"
+                android:layout_marginTop="3dp"
+                android:textColorHint="@color/insider"
+                android:textColor="@color/black"
+                />
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnsubmit"
+            android:layout_width="160dp"
+            android:layout_height="60dp"
+            android:layout_below="@+id/linear1"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/curved_btn"
+            android:text="SUBMIT"
+            android:textSize="30sp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/robotofont"
+            android:backgroundTint="@color/green"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="20dp"
+            />
+
+    </RelativeLayout>
+
+
+
+</ScrollView>

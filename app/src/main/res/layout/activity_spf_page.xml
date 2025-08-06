@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".S_pf_page"
+    >
+
+    <View
+        android:id="@+id/upper"
+        android:layout_width="match_parent"
+        android:layout_height="155dp"
+        android:background="@drawable/pfp_conor"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Student"
+        android:textStyle="bold"
+        android:fontFamily="@font/robotofont"
+        android:textSize="35sp"
+        android:textColor="@color/white"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        />
+
+    <View
+        android:id="@+id/lower"
+        android:layout_width="match_parent"
+        android:layout_height="1500dp"
+        android:layout_below="@+id/upper"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="41dp"
+        android:layout_marginEnd="0dp"
+        android:background="@drawable/pfp_belowconor" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/pfp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/pfp"
+        app:shapeAppearanceOverlay="@style/circle"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        />
+
+    <View
+        android:id="@+id/box1"
+        android:layout_width="380dp"
+        android:layout_height="290dp"
+        android:background="@drawable/curve"
+        android:layout_below="@id/pfp"
+        android:layout_marginTop="20dp"
+        android:alpha="0.5"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name :"
+        android:textSize="28sp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/robotofont"
+        android:layout_below="@+id/pfp"
+        android:layout_marginTop="34dp"
+        android:layout_marginStart="30dp"
+        />
+
+    <TextView
+        android:id="@+id/id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Official ID :"
+        android:textSize="28sp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/robotofont"
+        android:layout_below="@+id/name"
+        android:layout_marginTop="34dp"
+        android:layout_marginStart="30dp"
+        />
+
+    <TextView
+        android:id="@+id/gender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Gender :"
+        android:textSize="28sp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/robotofont"
+        android:layout_below="@+id/id"
+        android:layout_marginTop="34dp"
+        android:layout_marginStart="30dp"
+        />
+
+    <TextView
+        android:id="@+id/DOB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Date Of Birth :"
+        android:textSize="28sp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/robotofont"
+        android:layout_below="@+id/gender"
+        android:layout_marginTop="34dp"
+        android:layout_marginStart="30dp"
+
+        />
+
+        <EditText
+            android:id="@+id/edtname"
+            android:layout_width="250dp"
+            android:layout_height="40sp"
+            android:text="Nhel SengHuot"
+            android:fontFamily="@font/robotofont"
+            android:textSize="28dp"
+            android:textColor="@color/white"
+            android:background="@drawable/edit_text_no_underline"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/pfp"
+            android:layout_marginTop="34dp"
+            android:layout_marginEnd="25dp"
+            />
+
+        <EditText
+            android:id="@+id/edtid"
+            android:layout_width="250dp"
+            android:layout_height="40sp"
+            android:text="Nhel SengHuot"
+            android:fontFamily="@font/robotofont"
+            android:textSize="28dp"
+            android:textColor="@color/white"
+            android:background="@drawable/edit_text_no_underline"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/edtname"
+            android:layout_marginTop="31dp"
+            android:layout_marginEnd="-10dp"
+            />
+
+        <EditText
+            android:id="@+id/edtgender"
+            android:layout_width="250dp"
+            android:layout_height="40sp"
+            android:text="Nhel SengHuot"
+            android:fontFamily="@font/robotofont"
+            android:textSize="28dp"
+            android:textColor="@color/white"
+            android:layout_marginTop="34dp"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/edtid"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/edit_text_no_underline"
+            />
+
+        <EditText
+            android:id="@+id/etDOB"
+            android:layout_width="200dp"
+            android:layout_height="40sp"
+            android:text="Nhel SengHuot"
+            android:fontFamily="@font/robotofont"
+            android:textSize="28dp"
+            android:layout_marginTop="34dp"
+            android:textColor="@color/white"
+            android:layout_below="@+id/gender"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="5dp"
+            android:background="@drawable/edit_text_no_underline"
+            android:layout_gravity="end"
+            />
+
+    <View
+        android:layout_width="180dp"
+        android:layout_height="100dp"
+        android:background="@drawable/curve"
+        android:layout_below="@id/box1"
+        android:alpha="0.5"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="10dp"
+        />
+
+    <View
+        android:id="@+id/box2"
+        android:layout_width="180dp"
+        android:layout_height="100dp"
+        android:background="@drawable/curve"
+        android:layout_below="@id/box1"
+        android:alpha="0.5"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Grievance"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:layout_below="@id/box1"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="57dp"
+        />
+    <ImageView
+        android:id="@+id/grievance"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:background="@drawable/grivance"
+        android:scaleType="centerCrop"
+        android:layout_below="@id/box2"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="-75dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Permission"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:layout_below="@id/box1"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="55dp"
+        />
+
+    <ImageView
+        android:id="@+id/permission"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:background="@drawable/permission"
+        android:scaleType="centerCrop"
+        android:layout_below="@id/box2"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="63dp"
+        android:layout_marginTop="-90dp"
+        />
+
+    <View
+        android:id="@+id/box3"
+        android:layout_width="370dp"
+        android:layout_height="60dp"
+        android:background="@drawable/curve"
+        android:layout_below="@id/box2"
+        android:alpha="0.5"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Change Password"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:layout_below="@id/box2"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="22dp"
+        />
+
+<!--    <ImageView-->
+<!--        android:layout_width="50dp"-->
+<!--        android:layout_height="50dp"-->
+<!--        android:background="@drawable/goback"-->
+<!--        android:layout_below="@id/box2"-->
+<!--        android:layout_marginTop="13dp"-->
+<!--        android:layout_marginStart="40sp"-->
+<!--        />-->
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/logout"
+        android:layout_width="125dp"
+        android:layout_height="45dp"
+        android:text="Log Out"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:fontFamily="@font/robotofont"
+        android:layout_below="@+id/box3"
+        android:background="@drawable/red_curvebutton"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        />
+
+
+</RelativeLayout>

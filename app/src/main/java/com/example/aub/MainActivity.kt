@@ -35,5 +35,11 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+//        val gotohomework = findViewById<Button>(R.id.submit)
+//        gotohomework.setOnClickListener {
+//            val intent = Intent(this, Upload_hw::class.java)
+//            startActivity(intent)
+//            finish()
+//        }
     }
 }

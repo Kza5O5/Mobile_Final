@@ -7,7 +7,7 @@
     android:padding="16dp"
     android:fillViewport="true"
     android:background="@color/white"
-    tools:context=".AD_Register">
+    tools:context=".AD_Register_LT">
 
     <LinearLayout
         android:id="@+id/formContainer"
@@ -19,7 +19,7 @@
             android:id="@+id/tvFormTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Add New Student"
+            android:text="Add Lecture"
             android:textAlignment="center"
             android:fontFamily="@font/robotofont"
             android:textSize="30sp"

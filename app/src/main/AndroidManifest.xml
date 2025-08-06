@@ -8,13 +8,27 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@drawable/app"
+        android:icon="@drawable/app_round"
         android:label="AUB PORTAL"
-        android:roundIcon="@drawable/logo"
+        android:roundIcon="@drawable/app_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AUB"
         tools:targetApi="31">
-
+        <activity
+            android:name=".Formative_Ass_LT"
+            android:exported="false" />
+        <activity
+            android:name=".AD_Register_LT"
+            android:exported="false" />
+        <activity
+            android:name=".Upload_hw"
+            android:exported="false" />
+        <activity
+            android:name=".Permission"
+            android:exported="false" />
+        <activity
+            android:name=".S_pf_page"
+            android:exported="false" />
         <activity
             android:name=".St_Home"
             android:exported="false" />

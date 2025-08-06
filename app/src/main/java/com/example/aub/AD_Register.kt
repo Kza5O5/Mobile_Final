@@ -1,18 +1,26 @@
 package com.example.aub
 
+import android.app.Activity
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.aub.databinding.ActivityAdRegisterBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.storage.FirebaseStorage
+import java.util.*
 
 class AD_Register : AppCompatActivity() {
 
-    private lateinit var binding: ActivityAdRegisterBinding
-    private lateinit var auth: FirebaseAuth
-    private lateinit var firestore: FirebaseFirestore
+    lateinit var binding: ActivityAdRegisterBinding
+    lateinit var auth: FirebaseAuth
+    lateinit var firestore: FirebaseFirestore
+    val storageRef = FirebaseStorage.getInstance().reference
+
+    val PICK_IMAGE_REQUEST = 100
+    var imageUri: Uri? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,53 +30,117 @@ class AD_Register : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         firestore = FirebaseFirestore.getInstance()
 
+        // Open gallery when image button clicked
+        binding.uploadimage.setOnClickListener {
+            val intent = Intent(Intent.ACTION_GET_CONTENT)
+            intent.type = "image/*"
+            startActivityForResult(Intent.createChooser(intent, "Select Image"), PICK_IMAGE_REQUEST)
+        }
+
         binding.btnSubmit.setOnClickListener {
             val studentID = binding.etStudentId.text.toString().trim()
             val studentName = binding.etStudentName.text.toString().trim()
-            val studentAge = binding.etStudentAge.text.toString().trim()
-            val studentEmail = binding.etStudentEmail.text.toString().trim()
-            val studentPassword = binding.etPassword.text.toString().trim()
+            val gender = binding.etGender.text.toString().trim()
+            val dob = binding.etDOB.text.toString().trim()
+            val email = binding.etStudentEmail.text.toString().trim()
+            val password = binding.etPassword.text.toString().trim()
 
-            if (studentID.isEmpty() || studentName.isEmpty() || studentAge.isEmpty()
-                || studentEmail.isEmpty() || studentPassword.isEmpty()
-            ) {
+            if (studentID.isEmpty() || studentName.isEmpty() || gender.isEmpty()
+                || dob.isEmpty() || email.isEmpty() || password.isEmpty()) {
                 Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            auth.createUserWithEmailAndPassword(studentEmail, studentPassword)
-                .addOnCompleteListener { authTask ->
-                    if (authTask.isSuccessful) {
+            if (imageUri == null) {
+                Toast.makeText(this, "Please select an image", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
 
-                        val student = HelperClass(
-                            studentID = studentID,
-                            studentName = studentName,
-                            studentAge = studentAge,
-                            studentEmail = studentEmail
-                        )
-
-                        firestore.collection("Students").document(studentID)
-                            .set(student)
-                            .addOnSuccessListener {
-                                Toast.makeText(this, "Student registered successfully", Toast.LENGTH_SHORT).show()
-                                clearFields()
-                            }
-                            .addOnFailureListener {
-                                Toast.makeText(this, "Firestore error: ${it.message}", Toast.LENGTH_SHORT).show()
-                            }
-                    } else {
-                        Toast.makeText(this, "Authentication failed: ${authTask.exception?.message}", Toast.LENGTH_SHORT).show()
+            // Step 1: Create user
+            auth.createUserWithEmailAndPassword(email, password)
+                .addOnSuccessListener {
+                    val uid = auth.currentUser?.uid
+                    if (uid != null) {
+                        uploadImageToFirebase(uid, studentID, studentName, gender, dob, email)
                     }
                 }
+                .addOnFailureListener {
+                    Toast.makeText(this, "Auth failed: ${it.message}", Toast.LENGTH_SHORT).show()
+                }
         }
+    }
 
+    // Handle image result
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data != null && data.data != null) {
+            imageUri = data.data
+            binding.uploadimage.setImageURI(imageUri) // preview in ImageButton
+        }
+    }
+
+    // Step 2: Upload image to Firebase Storage
+    private fun uploadImageToFirebase(
+        uid: String,
+        studentID: String,
+        studentName: String,
+        gender: String,
+        dob: String,
+        email: String
+    ) {
+        val fileName = "profile_images/${uid}_${UUID.randomUUID()}.jpg"
+        val fileRef = storageRef.child(fileName)
+
+        fileRef.putFile(imageUri!!)
+            .addOnSuccessListener {
+                fileRef.downloadUrl.addOnSuccessListener { uri ->
+                    val imageUrl = uri.toString()
+                    saveToFirestore(uid, studentID, studentName, gender, dob, email, imageUrl)
+                }
+            }
+            .addOnFailureListener {
+                Toast.makeText(this, "Image upload failed: ${it.message}", Toast.LENGTH_SHORT).show()
+            }
+    }
+
+    // Step 3: Save data to Firestore
+    private fun saveToFirestore(
+        uid: String,
+        studentID: String,
+        studentName: String,
+        gender: String,
+        dob: String,
+        email: String,
+        imageUrl: String
+    ) {
+        val data = hashMapOf(
+            "studentID" to studentID,
+            "studentName" to studentName,
+            "gender" to gender,
+            "dob" to dob,
+            "email" to email,
+            "imageUrl" to imageUrl
+        )
+
+        firestore.collection("Students").document(uid)
+            .set(data)
+            .addOnSuccessListener {
+                Toast.makeText(this, "Student Registered Successfully", Toast.LENGTH_SHORT).show()
+                clearFields()
+            }
+            .addOnFailureListener {
+                Toast.makeText(this, "Firestore error: ${it.message}", Toast.LENGTH_SHORT).show()
+            }
     }
 
     private fun clearFields() {
         binding.etStudentId.text.clear()
         binding.etStudentName.text.clear()
-        binding.etStudentAge.text.clear()
+        binding.etGender.text.clear()
+        binding.etDOB.text.clear()
         binding.etStudentEmail.text.clear()
         binding.etPassword.text.clear()
+        binding.uploadimage.setImageResource(R.drawable.folder)
+        imageUri = null
     }
 }
