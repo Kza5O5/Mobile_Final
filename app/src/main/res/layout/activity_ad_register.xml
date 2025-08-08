@@ -22,7 +22,7 @@
             android:text="Add New Student"
             android:textAlignment="center"
             android:fontFamily="@font/robotofont"
-            android:textSize="30sp"
+            android:textSize="25sp"
             android:textColor="@color/black"
             android:textStyle="bold"
             android:paddingBottom="24dp" />
@@ -32,7 +32,8 @@
             android:textColor="@color/black"
             android:layout_height="wrap_content"
             android:text="Student ID"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:textSize="16sp"/>
         <EditText
             android:id="@+id/etStudentId"
             android:layout_width="match_parent"
@@ -46,7 +47,8 @@
             android:text="Student Name"
             android:textColor="@color/black"
             android:textStyle="bold"
-            android:layout_marginTop="16dp" />
+            android:layout_marginTop="16dp"
+            android:textSize="16sp"/>
         <EditText
             android:id="@+id/etStudentName"
             android:layout_width="match_parent"
@@ -60,6 +62,7 @@
             android:text="Gender"
             android:textStyle="bold"
             android:layout_marginTop="16dp"
+            android:textSize="16sp"
             />
         <EditText
             android:id="@+id/etGender"
@@ -73,6 +76,7 @@
             android:layout_height="wrap_content"
             android:text="Date Of Birth"
             android:textStyle="bold"
+            android:textSize="16sp"
             android:layout_marginTop="16dp"
             />
         <EditText
@@ -87,6 +91,7 @@
             android:text="Student Email"
             android:textColor="@color/black"
             android:textStyle="bold"
+            android:textSize="16sp"
             android:layout_marginTop="16dp" />
         <EditText
             android:id="@+id/etStudentEmail"
@@ -100,6 +105,7 @@
             android:layout_height="wrap_content"
             android:text="Password"
             android:textStyle="bold"
+            android:textSize="16sp"
             android:textColor="@color/black"
             android:layout_marginTop="16dp" />
         <EditText
@@ -122,12 +128,12 @@
                 android:text="Choose image"
                 android:textStyle="bold"
                 android:textColor="@color/black"
-                android:textSize="20dp"
+                android:textSize="16dp"
                 />
             <ImageButton
                 android:id="@+id/uploadimage"
-                android:layout_width="50sp"
-                android:layout_height="50dp"
+                android:layout_width="40sp"
+                android:layout_height="40dp"
                 android:layout_marginStart="190dp"
                 android:background="@drawable/folder"
                 android:src="@drawable/folder"

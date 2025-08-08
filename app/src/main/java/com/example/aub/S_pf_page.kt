@@ -3,40 +3,35 @@ package com.example.aub
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
-import android.widget.ImageView
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import com.bumptech.glide.Glide
 import com.example.aub.databinding.ActivitySpfPageBinding
-import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.auth.FirebaseAuth
-import kotlin.math.log
+import com.google.firebase.firestore.FirebaseFirestore
 
 class S_pf_page : AppCompatActivity() {
 
-    lateinit var db: FirebaseFirestore
-    lateinit var binding: ActivitySpfPageBinding
+    private lateinit var binding: ActivitySpfPageBinding
+    private lateinit var db: FirebaseFirestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivitySpfPageBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         db = FirebaseFirestore.getInstance()
         val currentUser = FirebaseAuth.getInstance().currentUser
-        val currentUserEmail = currentUser?.email
 
-        if (currentUserEmail == null) {
+        if (currentUser == null) {
             binding.edtname.setText("Not logged in")
             binding.edtid.setText("N/A")
             return
         }
 
-        db.collection("Students")
-            .whereEqualTo("email", currentUserEmail)
+        val uid = currentUser.uid
+
+        // Load student data
+        db.collection("Students").document(uid).collection("Students")
             .get()
             .addOnSuccessListener { result ->
                 if (result.isEmpty) {
@@ -52,18 +47,28 @@ class S_pf_page : AppCompatActivity() {
                 binding.edtid.setText(student?.studentID ?: "N/A")
                 binding.edtgender.setText(student?.gender ?: "N/A")
                 binding.etDOB.setText(student?.dob ?: "N/A")
+
+                student?.imageUrl?.let { imageUrl ->
+                    Glide.with(this)
+                        .load(imageUrl)
+                        .placeholder(R.drawable.pfp)
+                        .error(R.drawable.pfp)
+                        .into(binding.pfp)  // Using viewBinding
+                }
             }
             .addOnFailureListener { e ->
-                binding.edtname.setText("Error")
                 Log.e("Firestore", "Error fetching profile", e)
+                binding.edtname.setText("Error loading data")
             }
 
-        findViewById<ImageView>(R.id.permission).setOnClickListener {
+        // Permission navigation
+        binding.permission.setOnClickListener {
             startActivity(Intent(this, Permission::class.java))
             finish()
         }
 
-        findViewById<Button>(R.id.logout).setOnClickListener {
+        // Logout button
+        binding.logout.setOnClickListener {
             FirebaseAuth.getInstance().signOut()
             startActivity(Intent(this, Login_page::class.java))
             finish()

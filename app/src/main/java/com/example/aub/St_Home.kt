@@ -13,7 +13,6 @@ import com.example.aub.databinding.ActivityStHomeBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
-
 class St_Home : AppCompatActivity() {
 
     lateinit var db: FirebaseFirestore
@@ -21,58 +20,49 @@ class St_Home : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        // Setup ViewBinding
         binding = ActivityStHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Handle edge-to-edge layout
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
-        // Initialize Firebase
         db = FirebaseFirestore.getInstance()
         val auth = FirebaseAuth.getInstance()
         val currentUser = auth.currentUser
-        val currentUserEmail = currentUser?.email
 
-        if (currentUserEmail == null) {
+        if (currentUser == null) {
             Toast.makeText(this, "User not logged in!", Toast.LENGTH_SHORT).show()
             return
         }
 
-        Log.d("DEBUG", "Looking for student with email: $currentUserEmail")
+        val uid = currentUser.uid
+        Log.d("DEBUG", "Fetching student data for UID: $uid")
 
-        // Query Firestore for student
-        db.collection("Students")
-            .whereEqualTo("email", currentUserEmail)
+        // Access: Students → [UID] → Students
+        db.collection("Students").document(uid).collection("Students")
             .get()
             .addOnSuccessListener { result ->
                 if (result.isEmpty) {
-                    Toast.makeText(this, "No student found for $currentUserEmail", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "No student record found", Toast.LENGTH_SHORT).show()
                     Log.w("FIRESTORE", "No student document found.")
                 } else {
                     val document = result.documents.first()
                     val studentName = document.getString("studentName") ?: "No name"
                     val studentID = document.getString("studentID") ?: "No ID"
 
-                    Log.d("FIRESTORE", "Student found: $studentName / $studentID")
-
-                    // Display values in EditText
                     binding.edtname.setText(studentName)
                     binding.edtid.setText(studentID)
 
-                    // ✅ Load profile image if available
                     val imageUrl = document.getString("imageUrl")
                     if (!imageUrl.isNullOrEmpty()) {
                         Glide.with(this)
                             .load(imageUrl)
-                            .placeholder(R.drawable.pfp) // Optional: your default image
-                            .error(R.drawable.pfp)       // Optional: shown on fail
-                            .into(binding.gotopfp)           // ImageView in your layout
+                            .placeholder(R.drawable.pfp)
+                            .error(R.drawable.pfp)
+                            .into(binding.gotopfp)
                     }
                 }
             }
@@ -81,7 +71,6 @@ class St_Home : AppCompatActivity() {
                 Log.e("FIRESTORE", "Fetch failed", e)
             }
 
-        // Navigation buttons
         findViewById<ImageView>(R.id.gotopfp).setOnClickListener {
             startActivity(Intent(this, S_pf_page::class.java))
             finish()

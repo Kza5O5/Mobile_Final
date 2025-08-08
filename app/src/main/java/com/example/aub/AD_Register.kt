@@ -30,7 +30,7 @@ class AD_Register : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         firestore = FirebaseFirestore.getInstance()
 
-        // Open gallery when image button clicked
+        // Open gallery
         binding.uploadimage.setOnClickListener {
             val intent = Intent(Intent.ACTION_GET_CONTENT)
             intent.type = "image/*"
@@ -42,7 +42,7 @@ class AD_Register : AppCompatActivity() {
             val studentName = binding.etStudentName.text.toString().trim()
             val gender = binding.etGender.text.toString().trim()
             val dob = binding.etDOB.text.toString().trim()
-            val email = binding.etStudentEmail.text.toString().trim()
+            val email = binding.etStudentEmail.text.toString().trim().lowercase()
             val password = binding.etPassword.text.toString().trim()
 
             if (studentID.isEmpty() || studentName.isEmpty() || gender.isEmpty()
@@ -56,7 +56,6 @@ class AD_Register : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            // Step 1: Create user
             auth.createUserWithEmailAndPassword(email, password)
                 .addOnSuccessListener {
                     val uid = auth.currentUser?.uid
@@ -70,16 +69,14 @@ class AD_Register : AppCompatActivity() {
         }
     }
 
-    // Handle image result
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data != null && data.data != null) {
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data?.data != null) {
             imageUri = data.data
-            binding.uploadimage.setImageURI(imageUri) // preview in ImageButton
+            binding.uploadimage.setImageURI(imageUri)
         }
     }
 
-    // Step 2: Upload image to Firebase Storage
     private fun uploadImageToFirebase(
         uid: String,
         studentID: String,
@@ -103,7 +100,6 @@ class AD_Register : AppCompatActivity() {
             }
     }
 
-    // Step 3: Save data to Firestore
     private fun saveToFirestore(
         uid: String,
         studentID: String,
@@ -122,7 +118,9 @@ class AD_Register : AppCompatActivity() {
             "imageUrl" to imageUrl
         )
 
+        // Save inside: Students → [UID] → Students → [studentID]
         firestore.collection("Students").document(uid)
+            .collection("Students").document(studentID)
             .set(data)
             .addOnSuccessListener {
                 Toast.makeText(this, "Student Registered Successfully", Toast.LENGTH_SHORT).show()

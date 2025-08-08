@@ -6,6 +6,7 @@ data class HelperClass(
     val gender: String = "",
     val dob : String = "",
     val email : String = "",
-    val password : String? = null
+    val password : String? = null,
+    val imageUrl: String = ""
 )
 

@@ -23,10 +23,11 @@
         android:text="Login Page"
         android:textColor="@color/black"
         android:fontFamily="@font/robotofont"
-        android:textSize="40sp"
+        android:textSize="25dp"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/banner"
         android:layout_marginTop="50dp"
+        android:textStyle="bold"
         />
 
     <EditText
@@ -62,9 +63,9 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnlogin"
         android:layout_width="300dp"
-        android:layout_height="60dp"
+        android:layout_height="40dp"
         android:text="LOGIN"
-        android:textSize="28sp"
+        android:textSize="16sp"
         android:fontFamily="@font/robotofont"
         android:layout_below="@+id/password"
         android:layout_centerHorizontal="true"
