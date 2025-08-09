@@ -10,8 +10,8 @@
 
     <ImageButton
         android:id="@+id/pic"
-        android:layout_width="380dp"
-        android:layout_height="330dp"
+        android:layout_width="360dp"
+        android:layout_height="310dp"
         android:background="@drawable/frontpic"
         android:layout_marginTop="160dp"
         android:layout_centerHorizontal="true"
@@ -47,7 +47,6 @@
             android:layout_marginTop="20dp"
             android:background="@drawable/curved_btn"
             android:textColor="@color/black"
-
             />
     </LinearLayout>
 

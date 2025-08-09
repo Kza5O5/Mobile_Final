@@ -10,8 +10,8 @@
 
     <ImageView
         android:id="@+id/banner"
-        android:layout_width="360dp"
-        android:layout_height="300dp"
+        android:layout_width="340dp"
+        android:layout_height="280dp"
         android:background="@drawable/frontpic"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="70dp"
@@ -33,16 +33,16 @@
         />
 
     <EditText
-        android:layout_width="130dp"
-        android:layout_height="50dp"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
         android:text="  Enter OTP!"
         android:textStyle="bold"
-        android:textSize="22dp"
+        android:textSize="14dp"
         android:layout_below="@+id/OTP"
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="50dp"
         android:fontFamily="@font/robotofont"
-        android:layout_marginTop="-57dp"
+        android:layout_marginTop="-52dp"
         android:textColor="@color/black"
         android:alpha="0.9"
         android:background="@drawable/redcurve"
@@ -99,28 +99,30 @@
         android:background="@drawable/curved_btn"
         android:textColor="@color/black"
         />
-
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_below="@+id/submit"
+    android:layout_centerHorizontal="true"
+    android:layout_marginTop="30dp"
+    >
     <TextView
-        android:id="@+id/forget"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="Forget Your"
-        android:layout_below="@+id/btnSubmit"
-        android:layout_marginTop="20dp"
         android:textColor="@color/black"
         android:textSize="15sp"
-        android:layout_marginStart="120dp"
         />
-
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="Password ?"
-        android:layout_below="@+id/btnSubmit"
-        android:layout_marginTop="20dp"
         android:textColor="@color/white"
         android:textSize="15sp"
-        android:layout_alignLeft="@+id/forget"
-        android:layout_marginStart="90dp"
+        android:layout_marginStart="3sp"
         />
+
+</LinearLayout>
+
 </RelativeLayout>
